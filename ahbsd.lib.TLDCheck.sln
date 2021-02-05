@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ahbsd.lib.TLDCheck", "ahbsd.lib.TLDCheck\ahbsd.lib.TLDCheck.csproj", "{0CDEA9B2-226D-4343-8EA0-5B408FDDC912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{00A887C5-44D9-4A98-AC2C-F01CC8583478}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CDEA9B2-226D-4343-8EA0-5B408FDDC912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDEA9B2-226D-4343-8EA0-5B408FDDC912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDEA9B2-226D-4343-8EA0-5B408FDDC912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDEA9B2-226D-4343-8EA0-5B408FDDC912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34909AF7-E77A-4A02-9BB0-587488FA4BE9}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
+		$2.Text = @\n Copyright ${Year}  ${CopyrightHolder}\n\n   Licensed under the Apache License, Version 2.0 (the "License");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an "AS IS" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.
+		$0.VersionControlPolicy = $3
+		$3.CommitMessageStyle = $4
+		$4.Indent = @\t
+		$4.LastFilePostfix = "@:\n  "
+		$4.IncludeDirectoryPaths = True
+		description = @A quite simple library solution to check by IANA from https://data.iana.org/TLD/tlds-alpha-by-domain.txt \nif a given TLD exists at IANA.
+		version = 1.0
+	EndGlobalSection
+EndGlobal
