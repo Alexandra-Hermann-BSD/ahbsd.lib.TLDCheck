@@ -16,6 +16,8 @@
     <Description>A library with a simple way to check whether a given TLD exists.</Description>
     <AssemblyName>ahbsd.lib.TLDCheck_Core3.1</AssemblyName>
     <PackageVersion>1.0</PackageVersion>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageProjectUrl>https://github.com/Alexandra-Hermann-BSD/ahbsd.lib.TLDCheck</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
