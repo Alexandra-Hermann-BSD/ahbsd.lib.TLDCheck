@@ -42,7 +42,7 @@ namespace Test
                 $"{IANA_TLD.LastReloadTime.Milliseconds} milliseconds.");
         }
 
-        static void check(string tld, IANA_TLD iANA_TLD)
+        static void check(string tld, IIANA_TLD iANA_TLD)
         {
             if (iANA_TLD.CheckTLD(tld))
             {
