@@ -13,6 +13,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using ahbsd.lib.TLDCheck.IANA;
 
 namespace ahbsd.lib.TLDCheck
 {
@@ -67,5 +68,10 @@ namespace ahbsd.lib.TLDCheck
         /// <c>true</c> if the TLD is known by IANA, otherwise <c>false</c>.
         /// </returns>
         bool CheckTLD(Uri uri, TimeSpan timeSpan);
+        /// <summary>
+        /// Gets the last headline.
+        /// </summary>
+        /// <value>The last headline.</value>
+        IHeadline LastHaedline { get; }
     }
 }

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RestSharp;
+using ahbsd.lib.TLDCheck.IANA;
 
 namespace ahbsd.lib.TLDCheck
 {
@@ -45,7 +46,7 @@ namespace ahbsd.lib.TLDCheck
         /// <summary>
         /// Gets the last answer (first line) from fetching the TLD-List.
         /// </summary>
-        public static string LastAnswer { get; private set; }
+        public static IHeadline LastAnswer { get; private set; }
 
         /// <summary>
         /// When was the last Reload?
@@ -187,6 +188,13 @@ namespace ahbsd.lib.TLDCheck
 
             return StaticCheckTLD(tld, timeSpan);
         }
+
+
+        /// <summary>
+        /// Gets the last headline.
+        /// </summary>
+        /// <value>The last headline.</value>
+        public IHeadline LastHaedline => LastAnswer;
         #endregion
 
         /// <summary>
@@ -218,8 +226,6 @@ namespace ahbsd.lib.TLDCheck
             }
             else if (TLDs.Count > 0 && currentOffset > offset)
             {
-                TLDs.Clear();
-
                 result = (GetDataFromIANA() > 0);
 
                 lastCheck = DateTime.Now;
@@ -240,6 +246,8 @@ namespace ahbsd.lib.TLDCheck
             IRestRequest request = new RestRequest(Path, Method.GET, DataFormat.None);
             IRestResponse response = RestClient.Execute(request);
             string[] lines = null;
+            IHeadline oldHeadline = LastAnswer;
+
 
             if (response.ResponseStatus == ResponseStatus.Completed
                 || response.ResponseStatus == ResponseStatus.None)
@@ -250,11 +258,19 @@ namespace ahbsd.lib.TLDCheck
             if (lines != null && lines.Length > 1)
             {
                 result = lines.Length;
-                LastAnswer = lines[0].Trim();
+                LastAnswer = new Headline(lines[0].Trim());
 
-                for (int i = 1; i < lines.Length; i++)
+                if (!LastAnswer.Version.Equals(oldHeadline.Version))
                 {
-                    TLDs.Add(lines[i].Trim());
+                    // the whole idea with reload is nice - but if there was no
+                    // change, it isn't needes...
+
+                    TLDs.Clear();
+
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        TLDs.Add(lines[i].Trim());
+                    }
                 }
             }
 
