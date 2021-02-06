@@ -14,6 +14,7 @@
 //    limitations under the License.
 using System;
 using System.Linq;
+using System.Text;
 
 namespace ahbsd.lib.TLDCheck.IANA
 {
@@ -94,7 +95,9 @@ namespace ahbsd.lib.TLDCheck.IANA
         /// <returns>The Headline as string.</returns>
         public override string ToString()
         {
-            return Input;
+            StringBuilder result = new StringBuilder();
+            result.AppendFormat("{0} | Last Update: {1} UTC", Version, LastUpdated.ToString("s"));
+            return result.ToString();
         }
 
         #region implementation of IHeadline

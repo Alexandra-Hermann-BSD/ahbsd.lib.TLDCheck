@@ -260,13 +260,20 @@ namespace ahbsd.lib.TLDCheck
                 result = lines.Length;
                 LastAnswer = new Headline(lines[0].Trim());
 
-                if (!LastAnswer.Version.Equals(oldHeadline.Version))
+                if (oldHeadline != null && !LastAnswer.Version.Equals(oldHeadline.Version))
                 {
                     // the whole idea with reload is nice - but if there was no
                     // change, it isn't needes...
 
                     TLDs.Clear();
 
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        TLDs.Add(lines[i].Trim());
+                    }
+                }
+                else if (oldHeadline == null)
+                {
                     for (int i = 1; i < lines.Length; i++)
                     {
                         TLDs.Add(lines[i].Trim());

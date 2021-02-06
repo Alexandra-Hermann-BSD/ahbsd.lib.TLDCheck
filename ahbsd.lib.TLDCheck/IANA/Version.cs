@@ -96,9 +96,7 @@ namespace ahbsd.lib.TLDCheck.IANA
         /// </summary>
         /// <returns>The version as string.</returns>
         public override string ToString()
-        {
-            return $"Version from {Date.Date.ToString("yyyy-MM-dd")}, #{Nr}";
-        }
+            => $"Version from {Date:yyyy-MM-dd}, #{Nr}";
         #endregion
     }
 }
