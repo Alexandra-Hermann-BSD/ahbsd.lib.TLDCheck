@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ReleaseVersion>1.0</ReleaseVersion>
+    <ReleaseVersion>1.1</ReleaseVersion>
     <PackageId>ahbsd.lib.TLDCheck_Core3.1</PackageId>
     <Authors>Heinrich Alexandra Hermann</Authors>
     <Copyright>Copyright © 2021 Alexandra Hermann – Beratung, Software, Design</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <Owners>Heinrich Alexandra Hermann</Owners>
-    <PackageReleaseNotes>First version</PackageReleaseNotes>
+    <PackageReleaseNotes>Added some small parts.</PackageReleaseNotes>
     <Summary>A library with a simple way to check whether a given TLD exists.</Summary>
     <PackageTags>IANA; TLD;</PackageTags>
     <Title>TLD Check library</Title>
     <Description>A library with a simple way to check whether a given TLD exists.</Description>
     <AssemblyName>ahbsd.lib.TLDCheck_Core3.1</AssemblyName>
-    <PackageVersion>1.0</PackageVersion>
+    <PackageVersion>1.1</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageProjectUrl>https://github.com/Alexandra-Hermann-BSD/ahbsd.lib.TLDCheck</PackageProjectUrl>
   </PropertyGroup>

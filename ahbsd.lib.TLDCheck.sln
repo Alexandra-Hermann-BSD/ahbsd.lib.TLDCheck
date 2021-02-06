@@ -39,7 +39,8 @@ Global
 		$4.Indent = @\t
 		$4.LastFilePostfix = "@:\n  "
 		$4.IncludeDirectoryPaths = True
+		$4.LineAlign = 0
 		description = @A quite simple library solution to check by IANA from https://data.iana.org/TLD/tlds-alpha-by-domain.txt \nif a given TLD exists at IANA.
-		version = 1.0
+		version = 1.1
 	EndGlobalSection
 EndGlobal
