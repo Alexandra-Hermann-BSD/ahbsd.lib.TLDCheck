@@ -248,6 +248,7 @@ namespace ahbsd.lib.TLDCheck
             string[] lines = null;
             IHeadline oldHeadline = LastAnswer;
 
+            LastResponseStatus = response.ResponseStatus;
 
             if (response.ResponseStatus == ResponseStatus.Completed
                 || response.ResponseStatus == ResponseStatus.None)
@@ -313,5 +314,11 @@ namespace ahbsd.lib.TLDCheck
 
             return TLDs.Contains(tld.Trim().ToUpper());
         }
+
+        /// <summary>
+        /// Gets the last <see cref="ResponseStatus"/>.
+        /// </summary>
+        /// <value>The last <see cref="ResponseStatus"/>.</value>
+        public static ResponseStatus LastResponseStatus { get; private set; }
     }
 }
