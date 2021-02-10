@@ -45,6 +45,11 @@ namespace ahbsd.lib.TLDCheck.IANA
             Split();
         }
 
+        /// <summary>
+        /// Constructor with a given headline and a container.
+        /// </summary>
+        /// <param name="input">The given headline.</param>
+        /// <param name="container">The container.</param>
         public Headline(string input, IContainer container)
             : base()
         {
