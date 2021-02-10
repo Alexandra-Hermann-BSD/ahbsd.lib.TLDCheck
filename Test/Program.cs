@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using ahbsd.lib.TLDCheck;
+using ahbsd.lib.TLDCheck.IANA;
 
 namespace Test
 {
@@ -7,25 +9,32 @@ namespace Test
     {
         static void Main(string[] args)
         {
+            IList<string> tlds = new List<string>();
+
+            tlds.Add("de");
+            tlds.Add("a");
+            tlds.Add("aa");
+            tlds.Add("aaa");
+            tlds.Add("aaaa");
+            tlds.Add("us");
+            tlds.Add("org");
+            tlds.Add("nl");
+            tlds.Add("fritz");
+            tlds.Add("box");
+            tlds.Add("iana");
+            tlds.Add("alex");
+            tlds.Add("it");
+
             Console.WriteLine("TLD-Check Test");
             Console.WriteLine("==============");
             Console.WriteLine();
 
             IANA_TLD ianaTLDs = new IANA_TLD();
 
-            check("de", ianaTLDs);
-            check("a", ianaTLDs);
-            check("aa", ianaTLDs);
-            check("aaa", ianaTLDs);
-            check("aaaa", ianaTLDs);
-            check("us", ianaTLDs);
-            check("org", ianaTLDs);
-            check("nl", ianaTLDs);
-            check("gov", ianaTLDs);
-            check("fritz", ianaTLDs);
-            check("iana", ianaTLDs);
-            check("alex", ianaTLDs);
-            check("it", ianaTLDs);
+            foreach (var item in tlds)
+            {
+                check(item, ianaTLDs);
+            }
 
             Console.WriteLine();
             Console.WriteLine("Statistic:");
@@ -34,6 +43,7 @@ namespace Test
 
             Console.WriteLine("Last answer from IANA: " +
                     $"{IANA_TLD.LastAnswer}");
+            Console.WriteLine($"Last Response Status: {IANA_TLD.LastResponseStatus}");
             Console.WriteLine($"While running, there were {IANA_TLD.Reloads}" +
                 " (re)loads.");
             Console.WriteLine("The last reload took " +
