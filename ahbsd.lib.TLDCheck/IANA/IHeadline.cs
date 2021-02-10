@@ -13,13 +13,14 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.ComponentModel;
 
 namespace ahbsd.lib.TLDCheck.IANA
 {
     /// <summary>
     /// Interface for the headline.
     /// </summary>
-    public interface IHeadline
+    public interface IHeadline : IComponent
     {
         /// <summary>
         /// Gets the version of the data.

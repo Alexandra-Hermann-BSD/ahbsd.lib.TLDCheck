@@ -13,6 +13,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -26,7 +27,7 @@ namespace ahbsd.lib.TLDCheck.IANA
     /// # Version 2021020500, Last Updated Fri Feb  5 07:07:01 2021 UTC
     /// Part    0          1     0       1   2   3  4        5    6   7
     /// </remarks>
-    public class Headline : IHeadline
+    public class Headline : Component, IHeadline
     {
         /// <summary>
         /// The input data.
@@ -38,9 +39,27 @@ namespace ahbsd.lib.TLDCheck.IANA
         /// </summary>
         /// <param name="input">The given headline.</param>
         public Headline(string input)
+            : base()
         {
             Input = input.Substring(1).Trim(); // remove the beginning #
             Split();
+        }
+
+        public Headline(string input, IContainer container)
+            : base()
+        {
+            Input = input.Substring(1).Trim(); // remove the beginning #
+            Split();
+
+            if (container != null)
+            {
+                container.Add(this, $"Headline {Version}");
+
+                if (Site == null)
+                {
+                    Site = new HeadlineSite(this, container);
+                }
+            }
         }
 
         /// <summary>
@@ -50,7 +69,8 @@ namespace ahbsd.lib.TLDCheck.IANA
         {
             string[] parts = Input.Split(',');
             string[] versionParts = parts[0].Split(' ');
-            string[] updateParts = parts[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string[] updateParts = parts[1].Split(' ',
+                StringSplitOptions.RemoveEmptyEntries);
             string[] timeParts = updateParts[5].Split(':');
 
             string month = updateParts[3];
@@ -64,7 +84,15 @@ namespace ahbsd.lib.TLDCheck.IANA
 
             Version = new Version(versionParts.Last());
 
-            LastUpdated = new DateTime(year, GetMonth(month), day, hh, mm, ss, 0, DateTimeKind.Utc);
+            LastUpdated = new DateTime(
+                year,
+                GetMonth(month),
+                day,
+                hh,
+                mm,
+                ss,
+                0,
+                DateTimeKind.Utc);
         }
 
         /// <summary>
@@ -96,7 +124,9 @@ namespace ahbsd.lib.TLDCheck.IANA
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
-            result.AppendFormat("{0} | Last Update: {1} UTC", Version, LastUpdated.ToString("s"));
+            result.AppendFormat("{0} | Last Update: {1} UTC",
+                Version,
+                LastUpdated.ToString("s"));
             return result.ToString();
         }
 
@@ -112,6 +142,41 @@ namespace ahbsd.lib.TLDCheck.IANA
         /// </summary>
         /// <value>The date of last update.</value>
         public DateTime LastUpdated { get; private set; }
+        /// <summary>
+        /// This Component can not raise events.
+        /// </summary>
+        protected override bool CanRaiseEvents => false;
         #endregion
+
+        private class HeadlineSite : ISite
+        {
+            public HeadlineSite(IHeadline headline, IContainer container)
+            {
+                Component = headline;
+                Container = container;
+
+                if (headline != null && container != null)
+                {
+                    Name = $"Headline {headline.Version}";
+                }
+            }
+
+            public HeadlineSite(
+                IHeadline headline, IContainer container, string name)
+            {
+                Component = headline;
+                Container = container;
+                Name = name;
+            }
+            public IComponent Component { get; private set; }
+
+            public IContainer Container { get; private set; }
+
+            public bool DesignMode { get; private set; }
+
+            public string Name { get; set; }
+
+            public object GetService(Type serviceType) => null;
+        }
     }
 }
