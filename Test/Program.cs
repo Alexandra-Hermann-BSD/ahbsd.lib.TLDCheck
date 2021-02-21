@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ahbsd.lib.TLDCheck;
 using ahbsd.lib.TLDCheck.IANA;
+using ahbsd.lib.TLDCheck.Statistic;
 
 namespace Test
 {
@@ -10,6 +11,7 @@ namespace Test
         static void Main(string[] args)
         {
             IList<string> tlds = new List<string>();
+            IDownloadStatistic statistic;
 
             tlds.Add("de");
             tlds.Add("a");
@@ -36,20 +38,13 @@ namespace Test
                 check(item, ianaTLDs);
             }
 
+            statistic = new DownloadStatistic(ianaTLDs);
             Console.WriteLine();
             Console.WriteLine("Statistic:");
             Console.WriteLine("----------");
             Console.WriteLine();
 
-            Console.WriteLine("Last answer from IANA: " +
-                    $"{IANA_TLD.LastAnswer}");
-            Console.WriteLine($"Last Response Status: {IANA_TLD.LastResponseStatus}");
-            Console.WriteLine($"While running, there were {IANA_TLD.Reloads}" +
-                " (re)loads.");
-            Console.WriteLine("The last reload took " +
-                $"{IANA_TLD.LastReloadTime.Minutes} minutes and " +
-                $"{IANA_TLD.LastReloadTime.Seconds} seconds and " +
-                $"{IANA_TLD.LastReloadTime.Milliseconds} milliseconds.");
+            Console.WriteLine(statistic.ToString());
         }
 
         static void check(string tld, IIANA_TLD iANA_TLD)
