@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ahbsd.lib.TLDCheck", "ahbsd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{00A887C5-44D9-4A98-AC2C-F01CC8583478}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest", "NUnitTest\NUnitTest.csproj", "{71F6D014-AFEE-4723-9A48-F9C4CB1B7D84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A887C5-44D9-4A98-AC2C-F01CC8583478}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F6D014-AFEE-4723-9A48-F9C4CB1B7D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F6D014-AFEE-4723-9A48-F9C4CB1B7D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F6D014-AFEE-4723-9A48-F9C4CB1B7D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F6D014-AFEE-4723-9A48-F9C4CB1B7D84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
